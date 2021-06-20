@@ -1,0 +1,128 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"
+            integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4="
+            crossorigin="anonymous"></script>
+    <script src="../Scripts/ajaxCalls.js"></script>
+
+    <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+    <!-- For reviews: -->
+    <link href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+
+    <script src="https://apis.google.com/js/api.js"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/fancybox/3.5.7/jquery.fancybox.min.css" />
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/fancybox/3.5.7/jquery.fancybox.min.js"></script>
+    <script src="script.js"></script>
+    <!-- Chat -->
+    <link href="chatStyle.css" rel="stylesheet" />
+    <link href="aboutStyle.css" rel="stylesheet" />
+    <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css" />
+
+    <!-- caroucele sources -->
+    <link href="https://unpkg.com/flickity@2/dist/flickity.min.css" rel="stylesheet" />
+    <script src="https://unpkg.com/flickity@2/dist/flickity.pkgd.min.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+    <!-- caroucele sources -->
+
+    <link href="StyleSheetModalactor.css" rel="stylesheet" />
+
+    <!-- Links For Chat -->
+    <!--**** Remember to add the database script ***-->
+    
+    <script src="https://www.gstatic.com/firebasejs/7.14.6/firebase-app.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/7.14.6/firebase-analytics.js"></script>
+    <!--** Remember to add the database script *-->
+    <script src="https://www.gstatic.com/firebasejs/7.14.6/firebase-database.js"></script>
+    <!--Your web app's Firebase configuration-->
+    <script src="../Scripts/config.js"></script>
+    <!-- Links For Chat -->
+
+
+    <script src="../Scripts/aboutTv.js"></script>
+
+
+    <meta charset="utf-8" />
+    <title>About</title>
+    <style>
+        .paginate {
+            margin-right: 5px;
+        }
+
+        li {
+            display: inline-block;
+        }
+    </style>
+   
+
+</head>
+<body onload="initChat()">
+    <div class="header">
+        <div class="container-fluid" id="backgroundPorter">
+            <div class="left" id="poster"></div>
+            <div class="right">
+                <h3 id="tvTitle"></h3>
+                <p id="overview"></p>
+                <div id="trailer"></div>
+            </div>
+        </div>
+
+    </div>
+    <div class='title'><a>Actors:</a></div>
+    <!--<button id="getTV" href="insert_signup.html">Get The TV Show</button>-->
+    <a class="toblack" href="insert_signup.html"> Get The TV Show</a>
+    <div id="actors">
+    </div>
+    <!-- Modal content -->
+    <div id="myModal" class="modal">
+        <div id="actorAbout" class="modal-content">
+            <span class="close">&times;</span>
+            <p>Some text in the Modal..</p>
+        </div>
+    </div>
+    <div class='title'><a>Recommendations:</a></div>
+    <div id="recommendations"></div>
+    <div class='title'><a>Similar TV Shows:</a></div>
+    <div id="similars"></div>
+    <div class='title'><a>Reviews:</a></div>
+    <div id="reviews"></div>
+    <div class='title'><a>Chat Furum:</a></div>
+    <!-- Chat: -->
+    <div class="page-content page-container" id="page-content">
+        <div class="padding">
+            <div class="row container d-flex justify-content-center">
+                <div class="col-md-6">
+                    <div class="chatCard chatCard-bordered">
+                        <div class="chatCard-header">
+                            <h4 class="chatCard-title"><strong>Chat</strong></h4>
+                        </div>
+                        <div class="ps-container ps-theme-default ps-active-y" id="chat-content" style="overflow-y: scroll !important; height:400px !important;">
+                            <div id="chat"></div>
+
+                            <div class="ps-scrollbar-x-rail" style="left: 0px; bottom: 0px;">
+                                <div class="ps-scrollbar-x" tabindex="0" style="left: 0px; width: 0px;"></div>
+                            </div>
+                            <div class="ps-scrollbar-y-rail" style="top: 0px; height: 0px; right: 2px;">
+                                <div class="ps-scrollbar-y" tabindex="0" style="top: 0px; height: 2px;"></div>
+                            </div>
+                            <div class="publisher bt-1 border-light">
+                                <img class="avatar avatar-xs" src="https://img.icons8.com/color/36/000000/administrator-male.png" alt="...">
+                                <input id="msgTB" class="publisher-input" type="text" placeholder="Write something"><span class="publisher-btn file-group">
+                                    <button onclick="addMSG()">Add Message</button>
+                                </span>
+
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!--  -->
+</body>
+</html>

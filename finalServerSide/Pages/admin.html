@@ -1,0 +1,318 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <title>DB H&H</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+    <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.10.19/css/jquery.dataTables.min.css">
+    <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.10.19/css/dataTables.bootstrap.min.css">
+    <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/responsive/2.2.3/css/responsive.dataTables.min.css">
+    <script type="text/javascript" src="https://code.jquery.com/jquery-3.4.1.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+    <script type="text/javascript" src="https://cdn.datatables.net/1.10.19/js/jquery.dataTables.min.js"></script>
+    <script type="text/javascript" src="https://cdn.datatables.net/responsive/2.2.3/js/dataTables.responsive.min.js"></script>
+    <script type="text/javascript" src="https://cdn.datatables.net/1.10.19/js/dataTables.bootstrap.min.js"></script>
+    <script src="../scripts/ajaxCalls.js"></script>
+    <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
+    <link href="myStyle.css" rel="stylesheet" />
+    
+    <link href="AdminStyle.css" rel="stylesheet" />
+    <script src="../Scripts/navbarFunc.js"></script>
+   
+    <script>
+        var tbl; //DATA TABLE
+        $('document').ready(function () {
+            navBarVisability();
+            $("#showUsers").on("click", getUsers);
+            $("#showSeries").on("click", getSeries);
+            $("#showEpisodes").on("click", getEpisodes);
+        });
+
+        function getUsers() {
+            let api = "../api/Users";
+            ajaxCall("GET", api, "", getUsersSuccessCB, error);
+        }
+        function getSeries() {
+            let api = "../api/Seriess";
+            ajaxCall("GET", api, "", getSeriesSuccessCB, error);
+        }
+        function getEpisodes() {
+            let api = "../api/Episodes";
+            ajaxCall("GET", api, "", getEpisodesSuccessCB, error);
+        }
+
+        function getUsersSuccessCB(usersList) {
+            createUsersTable(usersList);     
+        }
+        function getSeriesSuccessCB(seriesList) {
+            createSeriesTable(seriesList); 
+        }
+        function getEpisodesSuccessCB(episodesList) {
+            createEpisodesTable(episodesList);
+        }
+       
+
+        // Delete a car from the server
+        function DeleteUser(id) {
+            ajaxCall("DELETE", "../api/Users/" + id, "", deleteSuccess, error);
+            ///ajaxCall("DELETE", "../api/Totals/" + id, "", deleteSuccess, error);
+        }
+        function deleteFunc(id) {
+            var userId = id.getAttribute('data-userId');
+            swal({ // this will open a dialouge
+                title: "Are you sure ??",
+                text: "",
+                icon: "warning",
+                buttons: true,
+                dangerMode: true
+            })
+                .then(function (willDelete) {
+                    if (willDelete) DeleteUser(userId);
+                    else swal("Not Deleted!");
+                });
+        }
+        function deleteSuccess(numOfUser) {
+            alert("Deleted " + numOfUser + " users")
+            getUsers();
+        }
+        function error(err) {
+            console.log(err)
+        }
+        function createUsersTable(usersdata) {
+            console.log(usersdata);
+            $("#ph").html("<table id='usersTable' class='display nowrap' style='width: 95%'> </table>");
+            try {
+                tbl = $('#usersTable').DataTable({
+                    data: usersdata,
+                    pageLength: 5,
+                    columns: [
+                        {
+                            render: function (data, type, row, meta) {
+                                let dataProd = "data-userId='" + row.Id + "'";
+                              //  viewBtn = "<button type='button' id='btnDataTable' class='view btn btn-success' " + dataProd + " > View </button>";
+                                //updateBtn = "<button type='button' class='update btn btn-success' " + dataProd + " > Update </button>";
+                                deleteBtn = "<button type='button' id='btnDataTable' class='delete btn btn-success' onclick='deleteFunc(this)' " + dataProd + " > Delete </button>";
+                                return deleteBtn;
+                            }
+                        },
+                        {
+                            title: "UserId:",
+                            data: "Id"
+                        },
+                        {
+                            title: "First Name",
+                            data: "FirstName"
+                        },
+                        {
+                            title: "Last Name",
+                            data: "LastName"
+                        },
+                        {
+                            title: "Email",
+                            data: "Email"
+                        },
+                        {
+                            title: "Password",
+                            data: "Password"
+
+                        },
+                        {
+                            title: "PhoneNumber",
+                            data: "PhoneNum"
+
+                        },
+                        {
+                            title: "Gender",
+                            data: "Gender"
+
+                        },
+                        {
+                            title: "Year of birth",
+                            data: "YearOfBirth"
+
+                        },
+                        {
+                            title: "Favorite Genre",
+                            data: "Genre"
+
+                        },
+                        {
+                            title: "Address",
+                            data: "Address"
+                        }
+                    ],
+
+                })
+            }
+            catch (err) {
+                alert(err)
+            }
+        }
+        ////////////////////////////////////////////series///////////////////////////////////////////////////
+        function createSeriesTable(seriesdata) {
+            $("#ph").html("<table id='seriesTable' class='display nowrap' style='width: 95%'> </table>");
+            console.log(seriesdata);
+            try {
+                tbl = $('#seriesTable').DataTable({
+                    data: seriesdata,
+                    pageLength: 5,
+                    columns: [
+                       
+                        {
+                            title: "Series Id:",
+                            data: "Id"
+                        },
+                        {
+                            title: "Series image",
+                            render: function (data, type, row, meta) {
+                                return "<img class='imgT 'width='70' height='90' src='" + row.Poster_path +"'/>";
+                            }
+                        },
+                        {
+                            title: "Series Name",
+                            data: "Name"
+                        },
+                        {
+                            title: "Preferences",
+                            data: "PreferencesCount"
+                        },
+                        {
+                            title: "Popularity",
+                            data: "Popularity"
+                        },
+                        {
+                            title: "First air date",
+                            data: "First_air_date"
+
+                        },
+                        {
+                            title: "Origin country",
+                            data: "Origin_country"
+
+                        },
+                        {
+                            title: "Original language",
+                            data: "Original_language"
+
+                        },
+                        {
+                            title: "Overview",
+                            render: function (data, type, row, meta) {
+                                return "<span>" + row.Overview.slice(0, 90) + "</span>";
+                            }
+
+                        }
+                    ],
+
+                })
+            }
+            catch (err) {
+                alert(err)
+            }
+        }
+
+    ////////////////////////////////////////////episode///////////////////////////////////////////////////
+        function createEpisodesTable(episodesdata) {
+            $("#ph").html("<table id='episodesTable' class='display nowrap' style='width: 95%'> </table>");
+            console.log(episodesdata);
+            try {
+                tbl = $('#episodesTable').DataTable({
+                    data: episodesdata,
+                    pageLength: 5,
+                    columns: [
+                      
+                        {
+                            title: "Episode Id:",
+                            data:"EpisodeId"
+                        },
+                        {
+                            title: "Episode image",
+                            render: function (data, type, row, meta) {
+                                return "<img 'width='50' height='70' src='" + row.ImageURL + "'/>";
+                            }
+                        },
+                        {
+                            title: "Episode Name",
+                            data:"EpisodeName"
+                        },
+                        {
+                            title: "Series Id",
+                            data:"SeriesId"
+                        },
+                        {
+                            title: "Series Name",
+                            data:"SeriesName"
+                        },
+                        {
+                            title: "Season Number",
+                            data:"SeasonNum"
+                        },
+                        {
+                            title: "Preferences",
+                            data: "PreferencesCount"
+                        },
+                        {
+                            title: "Air-Date",
+                            data:"AirDate"
+
+                        },       
+                        {
+                            title: "Overview",
+                            data:"Overview"
+
+                        }
+                    ],
+
+                })
+            }
+            catch (err) {
+                alert(err)
+            }
+        }
+
+        function redrawTable(tbl, data) {
+            tbl.clear();
+            for (var i = 0; i < data.length; i++) {
+                tbl.row.add(data[i]);
+            }
+            tbl.draw();
+        }
+
+        // this function is activated in case of a failure
+        function error(err) {
+            swal("Error: " + err);
+        }
+    </script>
+</head>
+<body>
+
+    <nav class="navbar navbar-inverse ">
+        <div class="container-fluid">
+            <div class="navbar-header">
+                <!--<a class="navbar-brand" href="#">The Movie H & H</a>-->
+            </div>
+            <ul class="nav navbar-nav justify-content-between">
+                <li><div id="userName"></div></li>
+                <li><a class="toblack" href="insert_signup.html"> Home</a></li>
+                <li><a class="toblack" id="view" href="view.html">View</a></li>
+                <li><a class="toblack" id="admin" href="admin.html">Admin</a></li>
+
+            </ul>
+
+            <ul class="nav navbar-nav navbar-right">
+                <li><a onclick="signUpClick()" id="signUp" class="toblack"><span class="glyphicon glyphicon-user singupc"></span> Sign Up</a></li>
+                <li><a id="login" href="login.html" class="toblack"><span class="glyphicon glyphicon-log-in "></span> Login</a></li>
+                <li><a onclick="exitFunc()" id="exit" class="toblack"><span class="glyphicon glyphicon-log-in "></span> Exit</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <button id="showUsers">SHOW ALL USERS</button>
+    <button id="showSeries">SHOW ALL Series</button>
+    <button id="showEpisodes">SHOW ALL Episodes</button>
+
+    <div id="ph"></div>
+    <!--<div id="seriesTableph"></div>-->
+
+</body>
+</html>

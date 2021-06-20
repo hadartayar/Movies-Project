@@ -1,0 +1,42 @@
+﻿#btnDataTable{
+    margin: 5px; 
+}
+.delete {
+    background-color: #ec4040;
+    border: 1px solid #ec4040;
+}
+.delete:hover {
+    background-color: red;
+    border: 1px solid red;
+}
+#ph {
+    height: 30%;
+    /*text-align:center;*/
+}
+td {
+    border: 1px dashed grey;
+}
+th {
+    /*text-align: center;*/
+}
+td > img {
+    display: block;
+    margin:auto;
+    text-align: center;
+  
+}
+#ph {
+    padding: 10px;
+}
+.paginate_button :hover
+{
+     background-color:aliceblue;
+}
+    /*#seriesTable, #episodesTable{
+    text-align: center;
+}
+#seriesTable > td {
+        text-align: center;
+        background-color:red;
+    }
+*/

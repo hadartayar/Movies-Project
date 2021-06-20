@@ -1,0 +1,157 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <title></title>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"
+            integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4="
+            crossorigin="anonymous">
+    </script>
+
+    <!-- The core Firebase JS SDK is always required and must be listed first -->
+    <!--<script src="https://www.gstatic.com/firebasejs/8.6.8/firebase-app.js"></script>-->
+
+    <!-- TODO: Add SDKs for Firebase products that you want to use
+         https://firebase.google.com/docs/web/setup#available-libraries -->
+    <!--<script src="https://www.gstatic.com/firebasejs/8.6.8/firebase-analytics.js"></script>-->
+
+    <!--**** Remember to add the database script ***-->
+    <!--<script src="https://www.gstatic.com/firebasejs/7.14.6/firebase-database.js"></script>-->
+
+
+    <!-- The core Firebase JS SDK is always required and must be listed first -->
+    <script src="https://www.gstatic.com/firebasejs/7.14.6/firebase-app.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/7.14.6/firebase-analytics.js"></script>
+    <!--** Remember to add the database script *-->
+    <script src="https://www.gstatic.com/firebasejs/7.14.6/firebase-database.js"></script>
+
+
+    <!--Your web app's Firebase configuration-->
+    <script src="../Scripts/config.js"></script>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+
+    <link href="chatStyle.css" rel="stylesheet" />
+
+
+    <script>
+
+        function init() {
+            msgArr = [];
+            var seriesName;
+            if (localStorage.series != null) {
+                var series = JSON.parse(localStorage["series"]);
+                seriesName = series.seriesObj.Name;
+            }
+            else
+                seriesName = "lucifer";
+            if (localStorage.user != null) {
+                let tmp = JSON.parse(localStorage["user"]);
+                userName = tmp.FirstName + " " + tmp.LastName;
+            }
+            //pulling the name of tvshow from ls and insert there too
+            ref = firebase.database().ref(seriesName);
+            // listen to incoming messages
+            listenToNewMessages();
+            // listen to removing messages
+            //listenToRemove();
+            ph = document.getElementById("ph");
+            chat = document.getElementById("chat");
+            date = calcDay();
+        }
+        function calcDay() {
+            var today = new Date();
+            var dd = String(today.getDate()).padStart(2, '0');
+            var mm = String(today.getMonth() + 1).padStart(2, '0'); //January is 0!
+            var yyyy = today.getFullYear();
+
+            return today = mm + '/' + dd + '/' + yyyy;
+        }
+        function listenToNewMessages() {
+            // child_added will be evoked for every child that was added
+            // on the first entry, it will bring all the childs
+            ref.on("child_added", snapshot => {
+                
+                msg = {
+                    name: snapshot.val().name,
+                    content: snapshot.val().msg,
+                    date: snapshot.val().date
+                }
+                msgArr.push(msg)
+                printMessage(msg);
+            })
+        }
+
+        function printMessage(msg) {
+            //let str = "name: " + msg.name + ", content: " + msg.content + "<br/>";
+            //console.log(printToChat(msg));
+            chat.innerHTML += printToChat(msg);
+        }
+
+        function printMessages(msgArr) {
+            var str = "";
+            for (let index = 0; index < msgArr.length; index++) {
+                const msg = msgArr[index];
+                //ph += "name: " + msg.name + ", content: " + msg.content + "<br/>";
+                str += printToChat(msg);
+            }
+            chat.innerHTML += str;
+        }
+
+        function addMSG() { //add msg to the array of messages
+            let content = document.getElementById("msgTB").value;
+            let name = userName;//document.getElementById("nameTB").value;
+
+            if (name == "") {
+                alert("must enter a name");
+                return;
+            }
+            ref.push().set({ "msg": content, "name": name, "date": date });
+        }
+
+        function printToChat(msg) {/*class="media-body"*/
+            return `<div class="media media-meta-day">` + msg.date +`</div>
+                    <div class="media media-chat media-chat-reverse">
+                        <div class="media-body">
+                            <p>`+ msg.name +`</p> 
+                            <p> ` + msg.content + `</p>
+                    </div>
+                </div>`;
+        }
+
+    </script>
+
+</head>
+<body onload="init()">
+    <div class="page-content page-container" id="page-content">
+        <div class="padding">
+            <div class="row container d-flex justify-content-center">
+                <div class="col-md-6">
+                    <div class="chatCard chatCard-bordered">
+                        <div class="chatCard-header">
+                            <h4 class="chatCard-title"><strong>Chat</strong></h4>
+                        </div>
+                        <div class="ps-container ps-theme-default ps-active-y" id="chat-content" style="overflow-y: scroll !important; height:400px !important;">
+                            <div id="chat"></div>
+
+                            <div class="ps-scrollbar-x-rail" style="left: 0px; bottom: 0px;">
+                                <div class="ps-scrollbar-x" tabindex="0" style="left: 0px; width: 0px;"></div>
+                            </div>
+                            <div class="ps-scrollbar-y-rail" style="top: 0px; height: 0px; right: 2px;">
+                                <div class="ps-scrollbar-y" tabindex="0" style="top: 0px; height: 2px;"></div>
+                            </div>
+                            <div class="publisher bt-1 border-light">
+                                <img class="avatar avatar-xs" src="https://img.icons8.com/color/36/000000/administrator-male.png" alt="...">
+                                <input id="msgTB" class="publisher-input" type="text" placeholder="Write something"><span class="publisher-btn file-group">
+                                    <button onclick="addMSG()">Add Message</button>
+                                </span>
+
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+</html>

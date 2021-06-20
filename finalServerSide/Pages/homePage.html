@@ -1,0 +1,124 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title></title>
+
+
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"
+            integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4="
+            crossorigin="anonymous">
+    </script>
+    <script src="../Scripts/ajaxCalls.js"></script>
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mdb-ui-kit/3.6.0/mdb.min.js"></script>
+
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <script src="https://maps.googleapis.com/maps/api/js?v=3.exp&libraries=places&key=AIzaSyCCwWKnfacKHx3AVajstMk6Ist1VUoNt9w"></script>
+    <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+
+
+    <link href="aboutStyle.css" rel="stylesheet" />
+    <link href="myStyle.css" rel="stylesheet" />
+    <script src="../Scripts/signUp.js"></script>
+    <script src="../Scripts/insertHome.js"></script>
+    <script src="../Scripts/navbarFunc.js"></script>
+    <link href="homePage.css" rel="stylesheet" />
+
+    <script>
+        $(document).ready(function () {
+
+            key = "90f77ef6862d870eb9f5fff3bc587100";
+
+            url = "https://api.themoviedb.org/";
+            imagePath = "https://image.tmdb.org/t/p/w500/";
+            // 64467
+            // 1416
+            //https://api.themoviedb.org/3/tv/1416/season/0/episode/64467?api_key=1c107f2bd2f3fc2aee24aa4f2f8d8647&language=en-US
+            method = "3/tv/";
+            api_key = "api_key=" + key;
+
+            getTopRated();  // Get similars Tv show
+         
+        });
+
+        function getTopRated() {
+            topRatedArr = "<div class='container'>";
+            topRatedArr += "<div class='row'>";
+            $("#topRated").html(topRatedArr);
+
+            let apiCall = url + "3/trending/tv/week?" + api_key;
+            ajaxCall("GET", apiCall, "", getSuccesstopRated, errortopRated);
+        }
+
+        r = 0; //index in result array that contain all the tv shows in the TMDB services
+        resultArr = null;
+        function getSuccesstopRated(topRated) {
+            console.log(topRated);
+            resultArr = topRated.results;
+            topRatedArr += "<div class='recommand-card'>";
+            topRatedArr += "<img src='" + imagePath + topRated.results[r].poster_path + "'>";
+            topRatedArr += "<h4><b>" + topRated.results[r].name + "</b></h4>";
+
+            let stars = 5;
+            let popularity = resultArr[r].popularity;
+            switch (true) {
+                case (popularity < 40):
+                    stars = 1
+                    break;
+                case (popularity < 60):
+                    stars = 2
+                    break;
+                case (popularity < 200):
+                    stars = 3
+                    break;
+                case (popularity < 400):
+                    stars = 4
+                    break;
+            }
+
+            topRatedArr += "<img class='starsPopularity' src= '../images/" + stars + "stars.png'/></div>";
+            $("#topRated").html(topRatedArr);
+            r++;
+            let apiCall = url + "3/trending/tv/week?" + api_key;
+            ajaxCall("GET", apiCall, "", getSuccesstopRated, errortopRated);
+        }
+        function errortopRated(err) {
+            console.log(err);
+            resultArr += "</div></div>";
+            $("#topRated").html(topRatedArr);
+            r = 0;
+        }
+    </script>
+</head>
+<body>
+    <nav class="navbar navbar-inverse ">
+        <div class="container-fluid">
+            <div class="navbar-header">
+                <!--<a class="navbar-brand" href="#">The Movie H & H</a>-->
+            </div>
+            <ul class="nav navbar-nav justify-content-between">
+                <li><div id="userName"></div></li>
+                <li><a class="toblack" href="insert_signup.html"> Home</a></li>
+                <li><a class="toblack" id="view" href="view.html">View</a></li>
+                <li><a class="toblack" id="admin" href="admin.html">Admin</a></li>
+
+            </ul>
+
+            <ul class="nav navbar-nav navbar-right">
+                <li><a onclick="signUpClick()" id="signUp" class="toblack"><span class="glyphicon glyphicon-user singupc"></span> Sign Up</a></li>
+                <li><a id="login" href="login.html" class="toblack"><span class="glyphicon glyphicon-log-in "></span> Login</a></li>
+                <li><a onclick="exitFunc()" id="exit" class="toblack"><span class="glyphicon glyphicon-log-in "></span> Exit</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <span id="webName">H & H </span>
+    <div class='titlesHomePage'><a>TOP RATED</a></div>
+    <div id="topRated"></div> 
+
+</body>
+</html>
