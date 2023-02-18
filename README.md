@@ -15,22 +15,17 @@ In addition we developed a recommending algorithm based on preferences of simila
 - Java Script
 
 <div>
-<img src="https://skillicons.dev/icons?i=js" title="js" **alt="js" width="50" height="50"/>
-  (https://skillicons.dev/icons?i=js,html,css,wasm)](https://skillicons.dev)
-
-</iv>
-
-(https://skillicons.dev/icons?i=js,html,css,wasm)](https://skillicons.dev)
+  <img src="https://skillicons.dev/icons?i=js" title="js" **alt="js" width="50" height="50"/>
+  <img src="https://skillicons.dev/icons?i=html" title="html" **alt="html" width="50" height="50"/>
+  <img src="https://skillicons.dev/icons?i=css" title="css" **alt="css" width="50" height="50"/>
+</div>
 
 ## Sever Side
 #### Programming languages & Technologies used:
 - C#
 - FireBase (Chat)
 
-
-
-
 <div>
-<img src="https://img.icons8.com/fluency/344/node-js.png" title="nodejs" **alt="nodejs" width="50" height="50"/>
-<img src="https://img.icons8.com/color/900/firebase.png" title="react-firebase" **alt="react-firebase" width="50" height="50"/>
+  <img src="https://img.icons8.com/color/900/c-sharp-logo.png" title="C#" **alt="C#" width="50" height="50"/>
+  <img src="https://img.icons8.com/color/900/firebase.png" title="react-firebase" **alt="react-firebase" width="50" height="50"/>
 </div>
