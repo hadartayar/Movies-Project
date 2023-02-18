@@ -26,6 +26,7 @@ In addition we developed a recommending algorithm based on preferences of simila
 <div>
   <img src="https://www.div.cz/img/ico/tmdb.png" title="tmdb" **alt="tmdb" width="50" height="50"/>
 </div>
+
 ## Sever Side
 The Server side is in charge of storing and retrieving users and relevant data in the MSSQL Server.
 - C#
