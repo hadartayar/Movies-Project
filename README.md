@@ -13,6 +13,7 @@ In addition we developed a recommending algorithm based on preferences of simila
 - HTML
 - CSS
 - Java Script
+(https://skillicons.dev/icons?i=js,html,css,wasm)](https://skillicons.dev)
 
 ## Sever Side
 #### Programming languages & Technologies used:
@@ -20,14 +21,9 @@ In addition we developed a recommending algorithm based on preferences of simila
 - FireBase (Chat)
 
 
+
+
 <div>
 <img src="https://img.icons8.com/fluency/344/node-js.png" title="nodejs" **alt="nodejs" width="50" height="50"/>
-<img src="https://img.icons8.com/officel/344/react.png" title="react" **alt="react" width="50" height="50"/>
-<img src="https://avatars.githubusercontent.com/u/71153457?s=280&v=4" title="lottie" **alt="lottie" width="50" height="50"/>
-<img src="https://mui.com/static/logo.png" title="MUI" **alt="MUI" width="50" height="50"/>
 <img src="https://img.icons8.com/color/900/firebase.png" title="react-firebase" **alt="react-firebase" width="50" height="50"/>
-<img src="https://avatars.githubusercontent.com/u/568561?v=4" title="KendoReact" **alt="KendoReact" width="50" height="50"/>
-<img src="https://avatars.githubusercontent.com/u/35137722?s=280&v=4" title="sweetalert2" **alt="sweetalert2" width="50" height="50"/>
-<img src="https://proj.ruppin.ac.il/bgroup57/test2/tar1/ReactWebcam.png" title="ReactWebCam" **alt="ReactWebCam" width="50" height="50"/>
-<img src="https://img.icons8.com/color/344/bootstrap.png" title="Bootstrap" **alt="Bootstrap" width="50" height="50"/>
 </div>
