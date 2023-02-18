@@ -43,13 +43,13 @@ The Server side is in charge of storing and retrieving users and relevant data i
 </div>
 
 ## Enviroments Used to develop this project
+- Visual Studio 2019
+- Github
+- [PostMan](https://www.postman.com/) 
+- [Talent API Tester](https://chrome.google.com/webstore/detail/talend-api-tester-free-ed/aejoelaoggembcahagimdiliamlcdmfm)
 <div>
   <img src="https://img.icons8.com/color/900/visual-studio.png" title="VS" **alt="VS" width="50" height="50"/>
   <img src="https://img.icons8.com/color/900/github.png" title="Github" **alt="Github" width="50" height="50"/>
 </div>
-
-#### Debugging
-- [PostMan](https://www.postman.com/) 
-- [Talent API Tester](https://chrome.google.com/webstore/detail/talend-api-tester-free-ed/aejoelaoggembcahagimdiliamlcdmfm)
 
 
