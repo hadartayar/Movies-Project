@@ -20,9 +20,12 @@ In addition we developed a recommending algorithm based on preferences of simila
   <img src="https://skillicons.dev/icons?i=js" title="js" **alt="js" width="50" height="50"/>
   <img src="https://skillicons.dev/icons?i=html" title="html" **alt="html" width="50" height="50"/>
   <img src="https://skillicons.dev/icons?i=css" title="css" **alt="css" width="50" height="50"/>
-  <img src="https://www.div.cz/img/ico/tmdb.png" title="tmdb" **alt="tmdb" width="50" height="50"/>
 </div>
 
+## API
+<div>
+  <img src="https://www.div.cz/img/ico/tmdb.png" title="tmdb" **alt="tmdb" width="50" height="50"/>
+</div>
 ## Sever Side
 The Server side is in charge of storing and retrieving users and relevant data in the MSSQL Server.
 - C#
