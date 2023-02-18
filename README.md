@@ -2,7 +2,7 @@
 In this website you can view all the series and movies that exists.
 We worked with TMDB API.
 
-In each series you can view its actors, all the seasons and chapters, the trailer, links to social networks, recommended series, similar series and more.
+In each series/ movie you can view its actors, all the seasons and chapters, the trailer, links to social networks, recommended series, similar series and more.
 For each series/movie there is a specific live-chat you can join.
 
 
