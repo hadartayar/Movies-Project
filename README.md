@@ -9,7 +9,6 @@ The users can add their favorites chapters from any series to their account, for
 In addition we developed a recommending algorithm based on preferences of similar users. 
 
 ## Client Side
-#### Programming languages & Technologies used:
 - HTML
 - CSS
 - Java Script
@@ -21,7 +20,6 @@ In addition we developed a recommending algorithm based on preferences of simila
 </div>
 
 ## Sever Side
-#### Programming languages & Technologies used:
 - C#
 - FireBase (Chat)
 
