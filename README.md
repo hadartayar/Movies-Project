@@ -1,3 +1,7 @@
+# Authors
+- [@hadartayar](https://github.com/hadartayar)
+- [@Hadar-Cohen](https://github.com/Hadar-Cohen)
+
 # Movies-Project
 In this website you can view all the series and movies that exists.
 We worked with TMDB API.
@@ -12,18 +16,38 @@ In addition we developed a recommending algorithm based on preferences of simila
 - HTML
 - CSS
 - Java Script
-
 <div>
   <img src="https://skillicons.dev/icons?i=js" title="js" **alt="js" width="50" height="50"/>
   <img src="https://skillicons.dev/icons?i=html" title="html" **alt="html" width="50" height="50"/>
   <img src="https://skillicons.dev/icons?i=css" title="css" **alt="css" width="50" height="50"/>
+  <img src="https://www.div.cz/img/ico/tmdb.png" title="tmdb" **alt="tmdb" width="50" height="50"/>
 </div>
 
 ## Sever Side
+The Server side is in charge of storing and retrieving users and relevant data in the MSSQL Server.
 - C#
 - FireBase (Chat)
-
 <div>
   <img src="https://img.icons8.com/color/900/c-sharp-logo.png" title="C#" **alt="C#" width="50" height="50"/>
-  <img src="https://img.icons8.com/color/900/firebase.png" title="react-firebase" **alt="react-firebase" width="50" height="50"/>
+  <img src="https://img.icons8.com/color/900/firebase.png" title="FireBase" **alt="FireBase" width="50" height="50"/>
 </div>
+
+## DataBases Used in this project
+- FireBase (Chat)
+- MSSQL Server
+<div>
+  <img src="https://img.icons8.com/color/900/firebase.png" title="FireBase" **alt="FireBase" width="50" height="50"/>
+  <img src="https://www.sqlservertutorial.net/wp-content/uploads/sql-server-tutorial.svg" title="MSSQL" **alt="MSSQL" width="50" height="50"/>
+</div>
+
+## Enviroments Used to develop this project
+<div>
+  <img src="https://img.icons8.com/color/900/visual-studio.png" title="VS" **alt="VS" width="50" height="50"/>
+  <img src="https://img.icons8.com/color/900/github.png" title="Github" **alt="Github" width="50" height="50"/>
+</div>
+
+#### Debugging
+- [PostMan](https://www.postman.com/) 
+- [Talent API Tester](https://chrome.google.com/webstore/detail/talend-api-tester-free-ed/aejoelaoggembcahagimdiliamlcdmfm)
+
+
