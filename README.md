@@ -26,14 +26,12 @@ In addition we developed a recommending algorithm based on preferences of simila
 ## Sever Side
 The Server side is in charge of storing and retrieving users and relevant data in the MSSQL Server.
 - C#
-- FireBase (Chat)
 <div>
   <img src="https://img.icons8.com/color/900/c-sharp-logo.png" title="C#" **alt="C#" width="50" height="50"/>
-  <img src="https://img.icons8.com/color/900/firebase.png" title="FireBase" **alt="FireBase" width="50" height="50"/>
 </div>
 
 ## DataBases Used in this project
-- FireBase (Chat)
+- FireBase
 - MSSQL Server
 <div>
   <img src="https://img.icons8.com/color/900/firebase.png" title="FireBase" **alt="FireBase" width="50" height="50"/>
