@@ -14,7 +14,11 @@ In addition we developed a recommending algorithm based on preferences of simila
 - CSS
 - Java Script
 
+<div>
 <img src="https://skillicons.dev/icons?i=js" title="js" **alt="js" width="50" height="50"/>
+  (https://skillicons.dev/icons?i=js,html,css,wasm)](https://skillicons.dev)
+
+</iv>
 
 (https://skillicons.dev/icons?i=js,html,css,wasm)](https://skillicons.dev)
 
